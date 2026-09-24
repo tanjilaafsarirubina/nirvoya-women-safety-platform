@@ -1,0 +1,17 @@
+# Local environment / secrets
+.env
+*.local.php
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+
+# Logs & dumps
+*.log
+*.sql.bak
