@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Nirvoya - Sign Up</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="center-screen">
+
+<div class="container">
+    <h2>Join Nirvoya</h2>
+    <div id="msg" class="alert alert-error" hidden></div>
+    <form action="api/register.php" method="POST">
+        <input type="text" name="full_name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="password" name="password" placeholder="Password (min. 6 characters)" minlength="6" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+
+        <label>Date of Birth:</label>
+        <input type="date" name="dob" required>
+
+        <select name="blood_group">
+            <option value="">Select Blood Group</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+        </select>
+
+        <button type="submit" class="btn btn-safe btn-block">Create Account</button>
+    </form>
+    <div class="link">
+        Already have an account? <a href="index.html">Login here</a>
+    </div>
+</div>
+
+<script>
+    // Show feedback passed back from api/register.php
+    const error = new URLSearchParams(location.search).get('error');
+    const msg = document.getElementById('msg');
+    if (error === 'exists') {
+        msg.textContent = "An account with this email already exists.";
+        msg.hidden = false;
+    } else if (error === 'invalid') {
+        msg.textContent = "Please fill in all fields with valid values.";
+        msg.hidden = false;
+    }
+</script>
+
+</body>
+</html>
